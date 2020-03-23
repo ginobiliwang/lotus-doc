@@ -1,16 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Github Page demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="index.js"></script>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Lotus Introduction
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../../stylesheets/master.css" rel="stylesheet" media="screen,print" />
+  <link href="../../../../stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='../../../../images/favicon.ico' rel='shortcut icon'>
+  <script src="../../../../javascripts/all.js"></script>
+
+  <script type="text/javascript">
+    if (window.location.host === 'localhost:9292') {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-39702075-1']);
+      _gaq.push(['_setDomainName', 'pivotal.io']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
 </head>
-<body>
-    <div id="main-content">
+
+<body class="x4360 x4360_client_tool_guides x4360_client_tool_guides_load x4360_client_tool_guides_load_unix x4360_client_tool_guides_load_unix_gpfdist has-subnav">
+
+<div class="viewport">
+<div class='wrap'>
+  <script src="https://use.typekit.net/clb0qji.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      try {
+          Typekit.load();
+      } catch (e) {
+      }
+  </script>
+  <script type="text/javascript">
+      document.domain = "pivotal.io";
+  </script>
+
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: { families: [ 'Source+Sans+Pro:300italic,400italic,300,400,600:latin' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
+
+    <header class="header header-layout">
+      <h1 class="logo">
+        Lotus Documentation
+      </h1>
+    </header>
+
+  <div class="container">
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <h1 class="title topictitle1">lotus</h1>
+
+
+  <div class="body">
+    <p class="p">High speed web server that serves data files to Greenplum Database.</p>
+
+    <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">Synopsis</h2>
+      
+<pre class="pre codeblock"><strong class="ph b">lotus --help</strong> 
+
+<strong class="ph b">lotus --version</strong></pre>
 
     </div>
+
+    <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">Description</h2>
+      
+      <p class="p"><samp class="ph codeph">lotus</samp> is a high speed web server that serves data files to Greenplum Databases.</p>
+
+<h3 class="title sectiontitle">Highlight</strong></h3>
+      <div class="note note">
+
+<span class="notetitle">1. </span> <strong class="ph b">Preactor pattern.</strong></div>
+<span class="notetitle">2. </span> <strong class="ph b">Based on Libevent library.</strong></div>
+<span class="notetitle">3. </span> <strong class="ph b">Memory pool for memory consumption.</strong></div>
+<span class="notetitle">4. </span> <strong class="ph b">Configurable Thread pool for multithread.</strong></div>
+<span class="notetitle">5. </span> <strong class="ph b">Zero copy to efficiently transfer data.(Optional)</strong></div>
+<span class="notetitle">6. </span> <strong class="ph b">Implement using C++/C language.</strong></div>
+<span class="notetitle">7. </span> <strong class="ph b">Implement gpfist protocol, could work with greenplum database.</strong></div>
+
+      <p class="p">The advantage of using <samp class="ph codeph">lotus</samp> is that it is built up with modern web architecture <a href="http://www.kegel.com/c10k.html">c10k problem</a>. It enables <samp class="ph codeph">lotus</samp> to be easy to deal with complicated reqiurements. It is more configurable, adaptable and faster comparing with the gpfdist.</p>
+      
+      <p class="p">Beside its performance, it could be easily integrated with message bus like Kafka/RabbitMQ or with data streaming server like Flink.</p>
+      
+      <p class="p">We have also developed streaming server, which would be released along with <samp class="ph codeph">lotus</samp>. The streaming server could ingest records/messages from Kafak/Rabbitmq and log agent like  <a href="https://fluentbit.io/documentation">fluent-bit</a>. Information from all these parties could be aggregated together and then fed into Greenplum database. There is demo at the bottom of the page.</p>
+
+      
+      <p class="p"><samp class="ph codeph">lotus</samp> could replace the old tool called  <a href="https://gpdb.docs.pivotal.io/6-3/utility_guide/ref/gpfdist.html">gpfdist</a> which is single thread and non-configurable web architeture. 
+
+      <p class="p">For readable external tables, <samp class="ph codeph">lotus</samp> split data file and serves data cocurrently to all the segment instances in the Greenplum Database system when users
+          <samp class="ph codeph">SELECT</samp> from the external table. </p>
+      
+      <p class="p">For working with Kafka/RabbitMQ/Fluent-bit it would be released together with <samp class="ph codeph">lotus</samp>.</p>
+
+
+<strong class="ph b">Hint</strong></pre>
+      <p class="p">When have you turned on Zero copy feature in <samp class="ph codeph">lotus</samp>, please carefully tune accordingly parameters like thread_num or split_size, sometimes data copy speed could be even worse when mis-configuration happen.</p>
+      
+      <p class="p">Anyway, zero copy feature could reduce context change and would bring performace enhancement.</p>
+
+
+    <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">Options</h2>
+      
+      <p class="p">We need to setup a config file before run <samp class="ph codeph">lotus</samp>, here is the example and explainations for the parameters.</p>
+      
+      <dl class="dl parml">
+        
+      <dt class="dt pt dlterm"> sub_reactor = 4<var class="keyword varname"></var>
+</dt>
+
+          <dd class="dd pd">Four sub reactor will be spawned to deal with http requests.</dd>
+
+        
+        
+          <dt class="dt pt dlterm"> thread_num = 32 <var class="keyword varname"></var>
+</dt>
+
+          <dd class="dd pd">Number of threads that will be used to work.</dd>
+
+        
+        
+          <dt class="dt pt dlterm"> host = 0.0.0.0 <var class="keyword varname"></var>
+</dt>
+
+          <dd class="dd pd">The HTTP Ip address on which <samp class="ph codeph">lotus</samp> will serve files.</dd>
+        
+        
+          <dt class="dt pt dlterm"> port = 4001 <var class="keyword varname"></var>
+</dt>
+          
+	  <dd class="dd pd">The HTTP port on which <samp class="ph codeph">lotus</samp> will serve files.</dd>
+
+          <dt class="dt pt dlterm"> target_dir = /tmp/test/ <var class="keyword varname"></var>
+</dt>
+	  <dd class="dd pd">The directory that <samp class="ph codeph">lotus</samp> is working.</dd>
+
+        
+        
+          <dt class="dt pt dlterm"> split_size = 32768 <var class="keyword varname"></var>
+</dt>
+	  <dd class="dd pd">Set the size for each split that <samp class="ph codeph">lotus</samp> will cut off to serve each http request.</dd>
+
+
+      </dl>
+
+    </div>
+
+    <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">Demos</h2>
+      
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qS_cn2V0bUM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+    <div class="section" id="topic1__section7">
+<h2 class="title sectiontitle">See Also</h2>
+      
+      <p class="p"><a href="https://gpdb.docs.pivotal.io/6-3/utility_guide/ref/gpfdist.html">gpfdist</a>.</p>
+    </div>
+
+  </div>
+
+
+
+      </main><!--end of content-->
+
+  </div><!-- end of container -->
+
+  <script type="text/javascript">
+    (function() {
+      var didInit = false;
+      function initMunchkin() {
+        if(didInit === false) {
+          didInit = true;
+          Munchkin.init('625-IUJ-009');
+        }
+      }
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+      s.onreadystatechange = function() {
+        if (this.readyState == 'complete' || this.readyState == 'loaded') {
+          initMunchkin();
+        }
+      };
+      s.onload = initMunchkin;
+      document.getElementsByTagName('head')[0].appendChild(s);
+    })();
+  </script>
+</div><!--end of wrap-->
+</div><!--end of viewport-->
+
+
 </body>
 </html>
