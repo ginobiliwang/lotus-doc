@@ -73,11 +73,10 @@
 
       <main class="content content-layout" id="js-content" role="main">
         <a id="top"></a>
-          <h1 class="title topictitle1">lotus</h1>
-
-
-  <div class="body">
-    <p class="p">High speed web server that serves data files to Greenplum Database.</p>
+        <h1 class="title sectiontitle">Description</h2>
+      
+      <p class="p"><samp class="ph codeph">lotus</samp> is a high speed web server that serves data files to Greenplum Databases.</p>
+      <p class="p"><samp class="ph codeph"><a href="https://ginobiliwang.github.io/lotus-doc/aster.html">aster</a></samp> is a streaming server that works together with <samp class="ph codeph">lotus</samp>.</p>
 
     <div class="section" id="topic1__section2">
 <h2 class="title sectiontitle">Releases</h2>
@@ -89,16 +88,11 @@
     <div class="section" id="topic1__section2">
 <h2 class="title sectiontitle">Synopsis</h2>
       
-<pre class="pre codeblock"><strong class="ph b">lotus --help</strong> 
-
-<strong class="ph b">lotus --version</strong></pre>
+<pre class="pre codeblock"><strong class="ph b">lotus --help</strong></pre>
 
     </div>
 
     <div class="section" id="topic1__section3">
-<h2 class="title sectiontitle">Description</h2>
-      
-      <p class="p"><samp class="ph codeph">lotus</samp> is a high speed web server that serves data files to Greenplum Databases.</p>
 
 <h3 class="title sectiontitle">Highlight</strong></h3>
       <div class="note note">
@@ -123,11 +117,11 @@
       <p class="p">For readable external tables, <samp class="ph codeph">lotus</samp> split data file and serves data cocurrently to all the segment instances in the Greenplum Database system when users
           <samp class="ph codeph">SELECT</samp> from the external table. </p>
       
-      <p class="p">For streaming server working with Kafka/RabbitMQ/Fluent-bit it would be released together with <samp class="ph codeph">lotus</samp>.</p>
+      <p class="p">For streaming server <a href="https://ginobiliwang.github.io/lotus-doc/aster.html">aster</a> working with Kafka/RabbitMQ/Fluent-bit it would be released together with <samp class="ph codeph">lotus</samp>.</p>
 
 
 <strong class="ph b">Hint</strong></pre>
-      <p class="p">When have you turned on Zero copy feature in <samp class="ph codeph">lotus</samp>, please carefully tune accordingly parameters like thread_num or split_size, sometimes data copy speed could be even worse when mis-configuration happen.</p>
+      <p class="p">When you have turned on Zero copy feature in <samp class="ph codeph">lotus</samp>, please carefully tune accordingly parameters like thread_num or split_size, sometimes data copy speed could be even worse when mis-configuration happen.</p>
       
       <p class="p">Anyway, zero copy feature could reduce context change and would bring performace enhancement.</p>
 
