@@ -9,7 +9,7 @@
   <!-- Use title if it's in the page YAML frontmatter -->
   <title>
       Lotus Introduction
-    
+
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../../../../stylesheets/master.css" rel="stylesheet" media="screen,print" />
@@ -26,6 +26,9 @@
 
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+"./index1.html" 224L, 9289C
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
@@ -55,6 +58,8 @@
     (function() {
       var wf = document.createElement('script');
       wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
         '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
       wf.type = 'text/javascript';
       wf.async = 'true';
@@ -73,27 +78,23 @@
 
       <main class="content content-layout" id="js-content" role="main">
         <a id="top"></a>
-        <h1 class="title sectiontitle">Description</h2>
-      
+
+  <div class="body">
+
+
+    <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">Description</h2>
+
       <p class="p"><samp class="ph codeph">lotus</samp> is a high speed web server that serves data files to Greenplum Databases.</p>
       <p class="p"><samp class="ph codeph"><a href="https://ginobiliwang.github.io/lotus-doc/aster.html">aster</a></samp> is a streaming server that works together with <samp class="ph codeph">lotus</samp>.</p>
 
     <div class="section" id="topic1__section2">
-<h2 class="title sectiontitle">Releases</h2>
-      
-     <p class="p"> <a href="https://ginobiliwang.github.io/lotus-doc/release.html">Binaries and release notes</a></p>
-
-    </div>
-    
-    <div class="section" id="topic1__section2">
 <h2 class="title sectiontitle">Synopsis</h2>
-      
+
+
 <pre class="pre codeblock"><strong class="ph b">lotus --help</strong></pre>
 
     </div>
-
-    <div class="section" id="topic1__section3">
-
 <h3 class="title sectiontitle">Highlight</strong></h3>
       <div class="note note">
 
@@ -101,9 +102,11 @@
 <span class="notetitle">2. </span> <strong class="ph b">Based on Libevent library.</strong></div>
 <span class="notetitle">3. </span> <strong class="ph b">Memory pool for memory consumption.</strong></div>
 <span class="notetitle">4. </span> <strong class="ph b">Configurable Thread pool for multithread.</strong></div>
-<span class="notetitle">5. </span> <strong class="ph b">Zero copy to efficiently transfer data with less context changes.(Optional)</strong></div>
+<span class="notetitle">5. </span> <strong class="ph b">Zero copy to efficiently transfer data.(Optional)</strong></div>
 <span class="notetitle">6. </span> <strong class="ph b">Implement using C++/C language.</strong></div>
 <span class="notetitle">7. </span> <strong class="ph b">Implement gpfist protocol, could work with greenplum database.</strong></div>
+
+
 
       <p class="p">The advantage of using <samp class="ph codeph">lotus</samp> is that it is built up with modern web architecture <a href="http://www.kegel.com/c10k.html">c10k problem</a>. It enables <samp class="ph codeph">lotus</samp> to be easy to deal with complicated reqiurements. It is more configurable, adaptable and faster comparing with the gpfdist.</p>
       
