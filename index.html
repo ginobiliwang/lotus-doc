@@ -107,7 +107,7 @@
 <span class="notetitle">2. </span> <strong class="ph b">Based on Libevent library.</strong></div>
 <span class="notetitle">3. </span> <strong class="ph b">Memory pool for memory consumption.</strong></div>
 <span class="notetitle">4. </span> <strong class="ph b">Configurable Thread pool for multithread.</strong></div>
-<span class="notetitle">5. </span> <strong class="ph b">Zero copy to efficiently transfer data.(Optional)</strong></div>
+<span class="notetitle">5. </span> <strong class="ph b">Zero copy to efficiently transfer data with less context changes.(Optional)</strong></div>
 <span class="notetitle">6. </span> <strong class="ph b">Implement using C++/C language.</strong></div>
 <span class="notetitle">7. </span> <strong class="ph b">Implement gpfist protocol, could work with greenplum database.</strong></div>
 
@@ -118,12 +118,12 @@
       <p class="p">We have also developed streaming server, which would be released along with <samp class="ph codeph">lotus</samp>. The streaming server could ingest records/messages from Kafak/Rabbitmq and log agent like  <a href="https://fluentbit.io/documentation">fluent-bit</a>. Information from all these parties could be aggregated together and then fed into Greenplum database. There is demo at the bottom of the page.</p>
 
       
-      <p class="p"><samp class="ph codeph">lotus</samp> could replace the old tool called  <a href="https://gpdb.docs.pivotal.io/6-3/utility_guide/ref/gpfdist.html">gpfdist</a> which is single thread and non-configurable web architeture. 
+      <p class="p"><samp class="ph codeph">lotus</samp> could replace the old tool called  <a href="https://gpdb.docs.pivotal.io/6-3/utility_guide/ref/gpfdist.html">gpfdist</a> which is single thread and non-configurable web architecture. 
 
       <p class="p">For readable external tables, <samp class="ph codeph">lotus</samp> split data file and serves data cocurrently to all the segment instances in the Greenplum Database system when users
           <samp class="ph codeph">SELECT</samp> from the external table. </p>
       
-      <p class="p">For working with Kafka/RabbitMQ/Fluent-bit it would be released together with <samp class="ph codeph">lotus</samp>.</p>
+      <p class="p">For streaming server working with Kafka/RabbitMQ/Fluent-bit it would be released together with <samp class="ph codeph">lotus</samp>.</p>
 
 
 <strong class="ph b">Hint</strong></pre>
