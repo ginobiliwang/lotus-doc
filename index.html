@@ -169,7 +169,37 @@
       
 <iframe width="360" height="215" src="https://www.youtube.com/embed/vrLfJ7BcNXY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	   <div><a href="https://www.bilibili.com/video/BV1nQ4y1K7ro/">Video demo for people can NOT visit Youtube</a></div>
-    <div class="section" id="topic1__section7">
+    
+<div class="section" id="topic1__section7">
+<h2 class="title sectiontitle">Benchmark</h2>
+      <p class="p">The main bottleneck for servers like lotus or gpfdist is the IO.Benchmark has been done with memory-mapped file which could be considered as high speed, so bottleneck is primarily from network card.</p><p class="p"> We have two 1000gb network cards, and one 10000gb network card. For lotus, just listening on 0.0.0.0, all the network cards would have 100% workload if there is no other bottlenecks. Below is the statistics.</p>
+ <table  border=1>
+        <caption>Benchmark between lotus and gpfdsit</caption>
+        <tr>
+          <td> </td>
+          <td>Time cost</td>
+          <td>Number of segments in gpdb</td>
+          <td>Number of records</td>
+          <td>Size of records</td>
+        </tr>
+        <tr>
+          <td>gpfdist</td>
+          <td>24 seconds</td>
+          <td>192</td>
+          <td>300,303,000</td>
+          <td>37GB</td>
+        </tr>
+        <tr>
+          <td>lotus</td>
+          <td>16.85 seconds</td>
+          <td>192</td>
+          <td>300,303,000</td>
+          <td>37GB</td>
+        </tr>
+        </table>	    
+</div>
+	    
+<div class="section" id="topic1__section7">
 <h2 class="title sectiontitle">See Also</h2>
       
       <p class="p"><a href="https://gpdb.docs.pivotal.io/6-3/utility_guide/ref/gpfdist.html">gpfdist</a>.</p>
