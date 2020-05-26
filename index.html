@@ -136,45 +136,29 @@
     <div class="section" id="topic1__section4">
 <h2 class="title sectiontitle">Options</h2>
       
-      <p class="p">We need to setup a config file before run <samp class="ph codeph">lotus</samp>, here is the example and explainations for the parameters.</p>
-      
-      <dl class="dl parml">
+     <dl class="dl parml">
         
-      <dt class="dt pt dlterm"> sub_reactor = 4<var class="keyword varname"></var>
+      <dt class="dt pt dlterm"> -v: display version<var class="keyword varname"></var>
+</dt>
+    
+      <dt class="dt pt dlterm"> -d: [optional] working directory, default is '/tmp/' <var class="keyword varname"></var>
+</dt>
+     
+      <dt class="dt pt dlterm"> -p: [required] listening port <var class="keyword varname"></var>
 </dt>
 
-          <dd class="dd pd">Four sub reactor will be spawned to deal with http requests.</dd>
-
-        
-        
-          <dt class="dt pt dlterm"> thread_num = 32 <var class="keyword varname"></var>
-</dt>
-
-          <dd class="dd pd">Number of threads that will be used to work.</dd>
-
-        
-        
-          <dt class="dt pt dlterm"> host = 0.0.0.0 <var class="keyword varname"></var>
-</dt>
-
-          <dd class="dd pd">The HTTP Ip address on which <samp class="ph codeph">lotus</samp> will serve files.</dd>
-        
-        
-          <dt class="dt pt dlterm"> port = 4001 <var class="keyword varname"></var>
+            
+      <dt class="dt pt dlterm"> -h: [required] listening host ip <var class="keyword varname"></var>
 </dt>
           
-	  <dd class="dd pd">The HTTP port on which <samp class="ph codeph">lotus</samp> will serve files.</dd>
-
-          <dt class="dt pt dlterm"> target_dir = /tmp/test/ <var class="keyword varname"></var>
+      <dt class="dt pt dlterm"> -m: [optional] slice size for each file split, default is '524288' <var class="keyword varname"></var>
 </dt>
-	  <dd class="dd pd">The directory that <samp class="ph codeph">lotus</samp> is working.</dd>
-
-        
-        
-          <dt class="dt pt dlterm"> split_size = 32768 <var class="keyword varname"></var>
+	
+      <dt class="dt pt dlterm"> -n: [optional] thread pool number, default is '32' <var class="keyword varname"></var>
 </dt>
-	  <dd class="dd pd">Set the size for each split that <samp class="ph codeph">lotus</samp> will cut off to serve each http request.</dd>
-
+	 
+      <dt class="dt pt dlterm"> -s: [optional] number of sub reactors, default is '4' <var class="keyword varname"></var>
+</dt>  
 
       </dl>
 
