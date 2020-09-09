@@ -109,6 +109,7 @@
 <span class="notetitle">5. </span> <strong class="ph b">Zero copy to efficiently transfer data.(Optional)</strong></div>
 <span class="notetitle">6. </span> <strong class="ph b">Implement using C++/C language.</strong></div>
 <span class="notetitle">7. </span> <strong class="ph b">Implement gpfist protocol, could work with greenplum database.</strong></div>
+<span class="notetitle">8. </span> <strong class="ph b">Use ZSTD as compression tool for data transfer, can surpass physical network capacity.</strong></div>
 
 
 
@@ -116,7 +117,7 @@
       
       <p class="p">Beside its performance, it could be easily integrated with message bus like Kafka/RabbitMQ or with data streaming server like Flink.</p>
       
-      <p class="p">We have also developed streaming server, which would be released along with <samp class="ph codeph">lotus</samp>. The streaming server could ingest records/messages from Kafak/Rabbitmq and log agent like  <a href="https://fluentbit.io/documentation">fluent-bit</a>. Information from all these parties could be aggregated together and then fed into Greenplum database. There is demo at the bottom of the page.</p>
+      <p class="p">We have also developed streaming server, which has been released along with <samp class="ph codeph">lotus</samp>. The streaming server could ingest records/messages from Kafak/Rabbitmq and log agent like  <a href="https://fluentbit.io/documentation">fluent-bit</a>. Information from all these parties could be aggregated together and then fed into Greenplum database. There is demo at the bottom of the page.</p>
 
       
       <p class="p"><samp class="ph codeph">lotus</samp> could replace the old tool called  <a href="https://gpdb.docs.pivotal.io/6-3/utility_guide/ref/gpfdist.html">gpfdist</a> which is single thread and non-configurable web architecture. 
@@ -131,6 +132,11 @@
       <p class="p">When you have turned on Zero copy feature in <samp class="ph codeph">lotus</samp>, please carefully tune accordingly parameters like thread_num or split_size, sometimes data copy speed could be even worse when mis-configuration happen.</p>
       
       <p class="p">Anyway, zero copy feature could reduce context change and would bring performace enhancement.</p>
+
+
+      <p class="p">When you have turned on ZSTD feature in <samp class="ph codeph">lotus</samp>, you need to add an entry in the external table ddl, things like this "Command: sh /tmp/gcurl.sh smdw:8081/dev/shm/lotus.txt". With such script, data stream IO on each segment would be redirected to the script itself. In the script, it is primarily a curl command with special http headers and unzstd command in linux pipe.</p>
+      
+      <p class="p">A sample script has been shipped together with lotus binary from version 1.1.0.</p>
 
 
     <div class="section" id="topic1__section4">
@@ -160,6 +166,8 @@
       <dt class="dt pt dlterm"> -s: [optional] number of sub reactors, default is '4' <var class="keyword varname"></var>
 </dt>  
 
+      <dt class="dt pt dlterm"> -z: [optional] enable zstd for compression, default is 'false' <var class="keyword varname"></var>
+</dt>  
       </dl>
 
     </div>
@@ -195,6 +203,27 @@
           <td>192</td>
           <td>300,303,000</td>
           <td>37GB</td>
+        </tr>
+        </table>	    
+ 
+      <p class="p">The top speed for typical physical nic of 10000Gbps is about 10000/1.024/1.024/8=1192.0928955078 MB per second, so we can get that the time span to consume 11GB data is 11*1024/1192 = 9.4496644  seconds.</p>
+
+      <p class="p"> We have used only one 10000Gbps network card to do the benchmark, when ZSTD compression is on, time comsuption is around 3.2 seconds that is 3 times faster than full speed of the nic in traditional way.  Below is the statistics.</p>
+<table  border=1>
+        <caption>Benchmark with ZSTD is on for lotus</caption>
+        <tr>
+          <td> </td>
+          <td>Time cost</td>
+          <td>Number of segments in gpdb</td>
+          <td>Number of records</td>
+          <td>Size of records</td>
+        </tr>
+        <tr>
+          <td>lotus</td>
+          <td>3182.563 milliseconds</td>
+          <td>64</td>
+          <td>89,000,000</td>
+          <td>11GB</td>
         </tr>
         </table>	    
 </div>
